@@ -1,0 +1,41 @@
+<div class="py-5 bg-light">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-3 mb-5">
+        </div>
+        <div class="col-md-6 mb-5 bg-white">
+          <div *ngIf="isLoggedIn; else loginFormTemplate">
+            <h3 class="text-center text-info">Already signed in! Enjoy using the app.</h3>
+        </div>
+        <!-- Login Form -->
+        <ng-template #loginFormTemplate>
+          <form [formGroup]="loginForm" (ngSubmit)="onSubmit()" class="p-5">
+            <div class="row form-group">
+              <div class="col-md-12 mb-3 mb-md-0">
+                <label class="font-weight-bold" for="username">Username</label>
+                <input type="text" id="username" formControlName="username" class="form-control" placeholder="Username" />
+                <p class="text-danger" *ngIf="username?.invalid && username?.touched">Invalid username format.</p>
+              </div>
+              <div class="col-md-12">
+                <label class="font-weight-bold" for="password">Password</label>
+                <input type="password" id="password" formControlName="password" class="form-control" placeholder="Password" />
+                <p class="text-danger" *ngIf="password?.invalid && password?.touched">Password is required.</p>
+              </div>
+            </div>
+            <div class="row form-group">
+              <div class="col-md-12">
+                <button type="submit" class="btn btn-info text-white px-4 py-2" [disabled]="loginForm.invalid">Submit</button>
+              </div>
+            </div>
+            <div class="row form-group">
+              <div class="col-md-12">
+                <p *ngIf="message && !errors.server" class="text-success">{{ message }}</p>
+                <p *ngIf="errors.server" class="text-danger">{{ errors.server }}</p>
+              </div>
+            </div>
+          </form>
+        </ng-template>
+        </div>
+      </div>
+    </div>
+  </div>

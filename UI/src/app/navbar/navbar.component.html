@@ -1,0 +1,39 @@
+
+<div class="site-mobile-menu">
+    <div class="site-mobile-menu-header">
+      <div class="site-mobile-menu-close mt-3">
+        <span class="icon-close2 js-menu-toggle"></span>
+      </div>
+    </div>
+    <div class="site-mobile-menu-body"></div>
+  </div> <!-- .site-mobile-menu -->
+  
+  <div class="site-navbar-wrap js-site-navbar bg-white">
+    
+    <div class="container">
+      <div class="site-navbar">
+        <div class="row align-items-center">
+            <div class="col-10">
+                <nav class="site-navigation text-left" role="navigation">
+                    <div class="container">
+                        <div class="d-inline-block d-lg-none ml-md-0 mr-auto py-3"><a routerLink="/" class="site-menu-toggle js-menu-toggle text-black"><span class="icon-menu h3"></span></a></div>
+                        
+                        <ul class="site-menu js-clone-nav d-none d-lg-block">
+                            <li><a routerLink="/">Home</a></li>
+                            <li *ngIf="!isAuthenticated()"><a routerLink="/signup">Signup</a></li>
+                            <li><a routerLink="/dashboard">Dashboard</a></li>
+                            <li><a routerLink="/summary">Summary</a></li>
+                            <li><a routerLink="/reports">Reports</a></li>
+                            <li *ngIf="isAuthenticated()"><a (click)="logoutUser()">Logout</a></li>
+                        </ul>
+                    </div>
+                </nav>
+            </div>
+            <div class="col-2">
+              <h2 class="mb-0 site-logo"><a routerLink="/" class="font-weight-bold">M50</a></h2>
+            </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  
